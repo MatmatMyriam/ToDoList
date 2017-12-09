@@ -1,0 +1,21 @@
+{
+  "short_name": "Myriam",
+  "name": "Myriam's manifest",
+  "icons": [
+    {
+      "src": "save.png",
+      "type": "../css"
+    }
+  ],
+  "files": [
+    {
+      "src":"index.html",
+      "type":"."
+    },
+    {
+      "src":"jquery-3.2.1.min.js",
+      "type":"../js"
+    }
+  ],
+  "start_url": "index.html?launcher=true"
+}

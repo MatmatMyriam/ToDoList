@@ -62,7 +62,7 @@ window.TaskManager = (() => {
             if(!(navigator.onLine)){
                 localStorage.setItem('Tasks',JSON.stringify(TaskManager.tasks));
             }else{
-                $.post("http://localhost/ToDoList/server/public/products", {"nom":task.name,"val": task.duration, "tag":task.tags});
+                $.post("/server/public/products", {"nom":task.name,"val": task.duration, "tag":task.tags});
             }
 
           container.empty();
@@ -120,7 +120,7 @@ window.TaskManager = (() => {
       if(!(navigator.onLine)){
           localStorage.setItem('Tasks',JSON.stringify(TaskManager.tasks));
       }else{
-          $.post("http://localhost/ToDoList/server/public/products", {"nom":fieldName.val(),"val": fieldDuration.val(), "tag":fieldTag.val()});
+          $.post("/server/public/products", {"nom":fieldName.val(),"val": fieldDuration.val(), "tag":fieldTag.val()});
       }
       $(div_id).empty();
       $('#taskmanager').empty();
@@ -133,7 +133,7 @@ module.listenOnline = () => {
     window.addEventListener('online', function () {
         //Vider tout task manager
         alert('Vous venez de vous reconnecter à internet. La synchronisation va débuter')
-        $.post("http://localhost/ToDoList/server/public/synchro", {"tasks":JSON.parse(localStorage.getItem("Tasks"))});
+        $.post("/server/public/synchro", {"tasks":JSON.parse(localStorage.getItem("Tasks"))});
         //dans synchro => vider le json et remettre tout le local storage
 
 
@@ -148,7 +148,7 @@ module.listenOnline = () => {
 
 $(() => {
 
-   $.get("http://localhost/ToDoList/server/public/products").done(function (data) {
+   $.get("/server/public/products").done(function (data) {
 
      $.each(data, (i, data) => {
          let OneTask = new TaskManager.Task(data.nom, data.prix, data.description);
